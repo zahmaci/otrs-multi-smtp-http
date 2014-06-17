@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<otrs_package version="1.0">
+    <Name>MultiSMTPHTTP</Name>
+    <Version>1.1.3</Version>
+    <Framework>3.x</Framework>
+    <Vendor>4ys.net</Vendor>
+    <URL>http://www.4ys.net/</URL>
+    <License>GNU GENERAL PUBLIC LICENSE Version 2, June 1991</License>
+    <Description Lang="en">MultiSmtp and HTTP based mail sending.</Description>
+    <IntroInstall Type="post" Lang="en" Title="Thank you!">Thank you for choosing the MultiSmtpHttp module.</IntroInstall>
+    <BuildDate>?</BuildDate>
+    <BuildHost>?</BuildHost>
+    <Filelist>
+        <File Location="Kernel/Config/Files/MultiSMTPHTTP.xml" Permission="644"></File>
+        <File Location="Kernel/System/MultiSMTPHTTP.pm" Permission="644"></File>
+        <File Location="Kernel/System/Email/MultiSMTPHTTP.pm" Permission="644"></File>
+        <File Location="Kernel/System/Email/MultiSMTPHTTP/SMTP.pm" Permission="644"></File>
+        <File Location="Kernel/System/Email/MultiSMTPHTTP/SMTPS.pm" Permission="644"></File>
+        <File Location="Kernel/System/Email/MultiSMTPHTTP/SMTPTLS.pm" Permission="644"></File>
+        <File Location="Kernel/System/Email/MultiSMTPHTTP/MAILGUN.pm" Permission="644"></File>
+        <File Location="Kernel/System/Email/MultiSMTPHTTP/POSTMARK.pm" Permission="644"></File>
+        <File Location="Kernel/System/Email/MultiSMTPHTTP/SENDGRID.pm" Permission="644"></File>
+        <File Location="Kernel/System/Email/MultiSMTPHTTP/TURBOSMTP.pm" Permission="644"></File>
+        <File Location="Kernel/System/Email/MultiSMTPHTTP/GENERALHTTP.pm" Permission="644"></File>
+        <File Location="Kernel/Modules/AdminMultiSMTPHTTP.pm" Permission="644"></File>
+        <File Location="Kernel/Language/de_MultiSMTPHTTP.pm" Permission="644"></File>
+        <File Location="Kernel/Language/tr_MultiSMTPHTTP.pm" Permission="644"></File>
+        <File Location="Kernel/Output/HTML/Standard/AdminMultiSMTPHTTPForm.dtl" Permission="644"></File>
+        <File Location="Kernel/Output/HTML/Standard/AdminMultiSMTPHTTPList.dtl" Permission="644"></File>
+    </Filelist>
+    <DatabaseInstall>
+        <TableCreate Type="post" Name="4ys_multi_smtp_http">
+            <Column AutoIncrement="true" Name="id" PrimaryKey="true" Required="true" Type="BIGINT"></Column>
+            <Column Name="type" Required="true" Size="250" Type="VARCHAR"></Column>
+            <Column Name="host" Required="true" Size="250" Type="VARCHAR"></Column>
+            <Column Name="smtp_user" Required="true" Size="250" Type="VARCHAR"></Column>
+            <Column Name="smtp_password" Required="false" Size="250" Type="VARCHAR"></Column>
+            <Column Name="port" Required="false" Size="250" Type="VARCHAR"></Column>
+            <Column Name="comments" Required="false" Size="250" Type="VARCHAR"></Column>
+            <Column Name="encrypted" Required="true" Type="SMALLINT"></Column>
+            <Column Name="create_time" Required="true" Type="DATE"></Column>
+            <Column Name="create_by" Required="true" Type="INTEGER"></Column>
+            <Column Name="valid_id" Required="true" Type="INTEGER"></Column>
+            <Column Name="change_time" Required="true" Type="DATE"></Column>
+            <Column Name="change_by" Required="true" Type="INTEGER"></Column>
+            <ForeignKey ForeignTable="users">
+                <Reference Foreign="id" Local="create_by"></Reference>
+                <Reference Foreign="id" Local="change_by"></Reference>
+            </ForeignKey>
+            <ForeignKey ForeignTable="valid">
+                <Reference Foreign="id" Local="valid_id"></Reference>
+            </ForeignKey>
+        </TableCreate>
+        <TableCreate Type="post" Name="4ys_multi_smtp_http_address">
+            <Column AutoIncrement="true" Name="id" PrimaryKey="true" Required="true" Type="BIGINT"></Column>
+            <Column Name="smtp_id" Required="true" Type="INTEGER"></Column>
+            <Column Name="address" Required="true" Size="250" Type="VARCHAR"></Column>
+        </TableCreate>
+    </DatabaseInstall>
+</otrs_package>
