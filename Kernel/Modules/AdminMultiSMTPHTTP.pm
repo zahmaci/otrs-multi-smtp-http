@@ -48,7 +48,6 @@ sub new {
 									'SMTPS' => 'Regular SMTP/S',
 									'SMTPTLS' => 'Regular SMTPTLS',
 									'MAILGUN' => 'Mailgun Http Api',
-									'POSTMARK' => 'Postmark  Http Api',
 									'SENDGRID' => 'Sendgrid Http Api',
 									'TURBOSMTP'=> 'TurboSmtp Http Api',
 									'GENERALHTTP'=> 'General Http Post'
@@ -246,8 +245,8 @@ sub _SMTPHTTPForm {
             $Param{JavascriptCall}    = 'anonymous();';
         }
 
-		if($Param{Type} eq 'MAILGUN' || $Param{Type} eq 'POSTMARK' || $Param{Type} eq 'TURBOSMTP' || $Param{Type} eq 'SENDGRID' || $Param{Type} eq 'GENERALHTTP'){
-			$Param{JavascriptCall}    = 'TG_'.lc($Param{Type}).'();';
+		if($Param{Type} eq 'MAILGUN' || $Param{Type} eq 'TURBOSMTP' || $Param{Type} eq 'SENDGRID' || $Param{Type} eq 'GENERALHTTP'){
+			$Param{JavascriptCall}    = '_4YS_'.lc($Param{Type}).'();';
 		}
 
 

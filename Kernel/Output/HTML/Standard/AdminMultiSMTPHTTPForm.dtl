@@ -217,29 +217,25 @@
 	//--------- RESET to Defaults END -----------//
 	switch(type){
 		case 'MAILGUN':
-			TG_mailgun();
-		break;
-
-		case 'POSTMARK':
-			TG_postmark();
+			_4YS_mailgun();
 		break;
 
 		case 'TURBOSMTP':
-			TG_turbosmtp();
+			_4YS_turbosmtp();
 		break;
 
 		case 'SENDGRID':
-			TG_sendgrid();
+			_4YS_sendgrid();
 		break;
 
 		case 'GENERALHTTP':
-			TG_generalhttp();
+			_4YS_generalhttp();
 		break;
 
 	} 
   });
 
-function TG_mailgun(){
+function _4YS_mailgun(){
 	$("label[for=Anonymous]").hide();
 	$('#Anonymous').parent().hide();
 
@@ -256,26 +252,7 @@ function TG_mailgun(){
 	$("label[for=User]").html('<span id="UserMarker" class="Marker">*</span> Apikey:');
 }
 
-function TG_postmark(){
-	$("label[for=Anonymous]").hide();
-	$('#Anonymous').parent().hide();
-
-	$("label[for=PasswordDecrypted]").hide();
-	$('#PasswordDecrypted').val('**nopass**');
-	$('#PasswordDecrypted').parent().hide();
-
-	$("label[for=Host]").hide();
-	$('#Host').parent().hide();
-	$('#Host').val('**nohost**');
-
-	$("label[for=Port]").hide();
-	$('#Port').val('**noport**');
-	$('#Port').parent().hide();
-
-	$("label[for=User]").html('<span id="UserMarker" class="Marker">*</span> X-Postmark-Server-Token:');
-}
-
-function TG_turbosmtp(){
+function _4YS_turbosmtp(){
 	$("label[for=Anonymous]").hide();
 	$('#Anonymous').parent().hide();
 
@@ -289,7 +266,7 @@ function TG_turbosmtp(){
 	$('#Port').parent().hide();
 }
 
-function TG_sendgrid(){
+function _4YS_sendgrid(){
 	$("label[for=Anonymous]").hide();
 	$('#Anonymous').parent().hide();
 
@@ -303,7 +280,7 @@ function TG_sendgrid(){
 	$('#Port').parent().hide();
 }
 
-function TG_generalhttp(){
+function _4YS_generalhttp(){
 	$("label[for=Anonymous]").hide();
 	$('#Anonymous').parent().hide();
 
