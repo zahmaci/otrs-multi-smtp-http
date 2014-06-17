@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<otrs_config version="1.0" init="Application">
+    <ConfigItem Name="Frontend::Module###AdminMultiSMTPHTTP" Required="0" Valid="1">
+        <Description Translatable="1">Multi SMTP/HTTP Frontend Module</Description>
+        <Group>MultiSMTPHTTP</Group>
+        <SubGroup>Frontend::Admin::ModuleRegistration</SubGroup>
+        <Setting>
+            <FrontendModuleReg>
+                <Group>admin</Group>
+                <Description>Manage SMTP/HTTP settings.</Description>
+                <Title>SMTP/HTTP SMTP settings</Title>
+                <NavBarName>Admin</NavBarName>
+                <NavBarModule>
+                    <Module>Kernel::Output::HTML::NavBarModuleAdmin</Module>
+                    <Name Translatable="1">SMTP/HTTP settings</Name>
+                    <Description Translatable="1">Manage SMTP/HTTP settings.</Description>
+                    <Block>Email</Block>
+                    <Prio>1000</Prio>
+                </NavBarModule>
+            </FrontendModuleReg>
+        </Setting>
+    </ConfigItem>
+    <ConfigItem Name="MultiSMTPHTTP::Salt" Required="1" Valid="1">
+        <Description Translatable="1">The salt for password encryption. It has to have exactly 8 bytes!</Description>
+        <Group>MultiSMTPHTTP</Group>
+        <SubGroup>Encryption</SubGroup>
+        <Setting>
+            <String Regex="">My4ySalt</String>
+        </Setting>
+    </ConfigItem>
+    <ConfigItem Name="MultiSMTPHTTP::EncryptionKey" Required="1" Valid="1">
+        <Description Translatable="1">The key for password encryption.</Description>
+        <Group>MultiSMTPHTTP</Group>
+        <SubGroup>Encryption</SubGroup>
+        <Setting>
+            <String Regex="">EncryptionKey</String>
+        </Setting>
+    </ConfigItem>
+    <ConfigItem Name="MultiSMTPHTTP::Fallback" Required="1" Valid="1">
+        <Description Translatable="1">The fallback mechanism when multi smtp fails.</Description>
+        <Group>MultiSMTPHTTP</Group>
+        <SubGroup>Core</SubGroup>
+        <Setting>
+            <Option SelectedID="Kernel::System::Email::SMTP">
+                <Item Key="Kernel::System::Email::DoNotSendEmail">Kernel::System::Email::DoNotSendEmail</Item>
+                <Item Key="Kernel::System::Email::Sendmail">Kernel::System::Email::Sendmail</Item>
+                <Item Key="Kernel::System::Email::SMTP">Kernel::System::Email::SMTP</Item>
+                <Item Key="Kernel::System::Email::SMTPS">Kernel::System::Email::SMTPS</Item>
+                <Item Key="Kernel::System::Email::SMTPTLS">Kernel::System::Email::SMTPTLS</Item>
+            </Option>
+        </Setting>
+    </ConfigItem>
+    <ConfigItem Name="MultiSMTPHTTP::Debug" Required="1" Valid="1">
+        <Description Translatable="1">Enable debugging mode of MultiSMTPHTTP.</Description>
+        <Group>MultiSMTPHTTP</Group>
+        <SubGroup>Core</SubGroup>
+        <Setting>
+            <Option SelectedID="0">
+                <Item Key="0">No</Item>
+                <Item Key="1">Yes</Item>
+            </Option>
+        </Setting>
+    </ConfigItem>
+</otrs_config>
